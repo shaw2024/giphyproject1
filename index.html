@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giphy Search</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">Giphy Finder</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <form id="search-form" class="search-form">
+      <input type="search" id="search-input" placeholder="Search for GIFs..." required />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="loader" class="hidden">Loading...</div>
+    <section id="results" class="gif-grid"></section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
