@@ -1,44 +1,44 @@
-$(document).ready(function () {
-  $('#search-form').submit(function (e) {
-    e.preventDefault();
+const API_KEY = 'AeTvbQ55cypN0hrAuewJZUlf0VOUNwnY'; // Replace with your actual Giphy API key
 
-    const query = $('#search-input').val().trim();
-    if (!query) return;
+const form = document.getElementById('search-form');
+const input = document.getElementById('search-input');
+const results = document.getElementById('results');
+const loader = document.getElementById('loader');
 
-    $('#loader').removeClass('hidden').text('Loading...');
-    $('#error').addClass('hidden').text('');
-    $('#results').empty();
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const query = input.value.trim();
+  if (!query) return;
 
-    $.ajax({
-      url: 'https://api.giphy.com/v1/gifs/search',
-      method: 'GET',
-      dataType: 'json',
-      data: {
-        api_key: 'dc6zaTOxFJmzC',  // Public test key
-        q: query,
-        limit: 24
-      },
-      success: function (res) {
-        const gifs = res.data;
-        if (!gifs || gifs.length === 0) {
-          $('#error').removeClass('hidden').text('No GIFs found.');
-          return;
-        }
-        gifs.forEach(gif => {
-          const imgUrl = gif.images.fixed_height.url;
-          if (imgUrl) {
-            $('#results').append(`<img src="${imgUrl}" alt="GIF" />`);
-          }
-        });
-      },
-      error: function (xhr) {
-        console.error('Status:', xhr.status);
-        console.error('Response:', xhr.responseText);
-        $('#error').removeClass('hidden').text('Error fetching GIFs.');
-      },
-      complete: function () {
-        $('#loader').addClass('hidden');
-      }
-    });
-  });
+  results.innerHTML = '';
+  loader.classList.remove('hidden');
+
+  try {
+    const res = await fetch(
+      `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${encodeURIComponent(query)}&limit=12&rating=G`
+    );
+    const data = await res.json();
+
+    if (data.data.length === 0) {
+      results.innerHTML = '<p>No GIFs found.</p>';
+    } else {
+      data.data.forEach((gif) => {
+        const gifDiv = document.createElement('div');
+        gifDiv.classList.add('gif-item');
+
+        const img = document.createElement('img');
+        img.src = gif.images.fixed_height.url;
+        img.alt = gif.title;
+
+        gifDiv.appendChild(img);
+        results.appendChild(gifDiv);
+      });
+    }
+  } catch (err) {
+    results.innerHTML = '<p>Error loading GIFs.</p>';
+    console.error(err);
+  } finally {
+    loader.classList.add('hidden');
+  }
 });
+
