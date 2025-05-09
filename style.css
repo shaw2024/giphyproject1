@@ -1,152 +1,155 @@
+/* Global Styles */
 body {
-  font-family: "Roboto", sans-serif;
-  background: #f4f4f4;
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f7fa;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
-/* Navigation Bar */
 header {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background-color: #2b2d42;
+  color: #fff;
+  padding: 15px 0;
 }
-header .navbar {
+
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: auto;
+  padding: 0 20px;
 }
-header .nav-logo {
+
+.logo {
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #007bff;
+  font-weight: 600;
 }
-header .nav-links {
+
+.menu {
   list-style: none;
   display: flex;
   gap: 20px;
 }
-header .nav-links li a {
+
+.menu li a {
+  color: #fff;
   text-decoration: none;
-  color: #333;
-  font-size: 1.1rem;
-  transition: color 0.2s;
-}
-header .nav-links li a:hover {
-  color: #0056b3;
+  font-weight: 500;
 }
 
-/* Main Content */
+.menu li a:hover {
+  color: #ef233c;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  text-align: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
-.main-content .search-form {
+
+.search-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #2b2d42;
+}
+
+#search-form {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
-.main-content .search-form input[type=search] {
-  padding: 12px 15px;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+input[type=search] {
+  padding: 12px;
   width: 300px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.main-content .search-form input[type=search]:focus {
-  border-color: #007bff;
+  border-radius: 30px;
+  border: 2px solid #8d99ae;
   outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
 }
-.main-content .search-form button {
+
+button {
   padding: 12px 20px;
-  font-size: 1.2rem;
-  background: #007bff;
+  background-color: #ef233c;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background 0.3s;
-}
-.main-content .search-form button:hover {
-  background: #0056b3;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-/* Loader */
+button:hover {
+  background-color: #d90429;
+}
+
 #loader {
-  font-size: 1.2rem;
-  color: #007bff;
-  margin: 20px;
+  margin: 10px 0;
 }
 
-/* GIF Grid */
+.hidden {
+  display: none;
+}
+
+#error {
+  color: #d90429;
+  margin-top: 15px;
+}
+
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px;
   max-width: 1200px;
-  margin: auto;
-}
-.gif-grid img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.gif-grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
 }
 
-/* Error Message */
-#error {
-  color: #e74c3c;
-  margin: 20px;
-  font-weight: bold;
+.gif-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gif-grid img:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  background-color: #2b2d42;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav-links {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu {
     flex-direction: column;
     gap: 10px;
   }
-  .search-form {
-    flex-direction: column;
-  }
-  .search-form input[type=search],
-  .search-form button {
+  input[type=search], button {
     width: 100%;
   }
   .gif-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
-  .nav-logo {
-    font-size: 1.5rem;
-  }
-}
-@media (max-width: 480px) {
-  .nav-logo {
-    font-size: 1.2rem;
-  }
-  input[type=search] {
-    font-size: 1rem;
-  }
-  button {
-    font-size: 1rem;
-  }
-  #loader {
-    font-size: 1rem;
+  h1 {
+    font-size: 2rem;
   }
 }/*# sourceMappingURL=style.css.map */

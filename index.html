@@ -3,30 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giphy Search</title>
+  <title>Giphy Finder</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">Giphy Finder</div>
-      <ul class="nav-links">
+  <header>
+    <nav class="navbar">
+      <div class="logo">Giphy Finder</div>
+      <ul class="menu">
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main class="main-content">
-    <form id="search-form" class="search-form">
-      <input type="search" id="search-input" placeholder="Search for GIFs..." required />
-      <button type="submit">Search</button>
-    </form>
-
-    <div id="loader" class="hidden">Loading...</div>
+    <div class="search-section">
+      <h1>Discover Amazing GIFs</h1>
+      <form id="search-form">
+        <input type="search" id="search-input" placeholder="Search for GIFs..." required />
+        <button type="submit">🔍 Search</button>
+      </form>
+      <div id="loader" class="hidden">Loading...</div>
+      <p id="error" class="hidden"></p>
+    </div>
     <section id="results" class="gif-grid"></section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Giphy Finder. All rights reserved.</p>
+  </footer>
 
   <script src="main.js"></script>
 </body>
