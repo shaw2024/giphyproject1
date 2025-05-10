@@ -41,4 +41,3 @@ form.addEventListener('submit', async (e) => {
     loader.classList.add('hidden');
   }
 });
-
